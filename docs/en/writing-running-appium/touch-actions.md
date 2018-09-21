@@ -35,7 +35,8 @@ The available events from the spec are:
 Here's an example of creating an action in pseudocode:
 
 ```center
-TouchAction().press(el0).moveTo(el1).release()
+TouchAction action = new TouchAction(driver);
+action.press(ElementOption.element(el0).moveTo(ElementOption.element(el1).release()
 ```
 
 The above simulates a user pressing down on an element, sliding their finger
@@ -47,8 +48,8 @@ the timing of the gesture.
 `moveTo` coordinates are now *absolute* to the current position. For example, dragging from
 100,100 to 200,200 can be achieved by:
 ```
-.press(100,100) // Start at 100,100
-.moveTo(200,200) // Passing absolute values of 200,200 ending up at 200,200
+.press(PointOption.point(100,100)) // Start at 100,100
+.moveTo(PointOption.point(200,200) // Passing absolute values of 200,200 ending up at 200,200
 
 ```
 
@@ -67,9 +68,8 @@ object.
 In pseudocode, both of the following are equivalent:
 
 ```center
-TouchAction().tap(el).perform()
+action.tap(ElementOption.element(el).perform()
 
-driver.perform(TouchAction().tap(el))
 ```
 
 ### MultiTouch
